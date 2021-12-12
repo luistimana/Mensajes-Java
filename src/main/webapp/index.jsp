@@ -38,5 +38,27 @@
             </div>
         </div>
 
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Todos los mensajes</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Luis Timaná</h5>
+                            
+                            <p class="card-text">Mensaje corto.</p>
+                            <p class="blockquote-footer"><cite>12/12/2021</cite></p>
+                            <a href="#" class="card-link">Editar</a>
+                            <a href="#" class="card-link">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </body>
 </html>
