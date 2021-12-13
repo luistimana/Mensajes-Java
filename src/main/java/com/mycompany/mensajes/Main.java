@@ -21,9 +21,13 @@ public class Main {
 //         int registro = mensajeDao.insertar(msm);
 //         
 //         System.out.println("Se inserto " + registro + " registro.");
-         Mensaje msm = new Mensaje(7, "Hola editado", "web");
-         int registro = mensajeDao.insertar(msm);
-         System.out.println("Se edito " + registro + " registro.");
+//         Mensaje msm = new Mensaje(7, "Hola editado", "web");
+//         int registro = mensajeDao.insertar(msm);
+//         System.out.println("Se edito " + registro + " registro.");
+         
+         Mensaje msm = new Mensaje(4);
+         int registro = mensajeDao.eliminar(msm);
+         System.out.println("Se elimino " + registro + " registro.");
          
          List<Mensaje> mensajes = mensajeDao.seleccionar();
          

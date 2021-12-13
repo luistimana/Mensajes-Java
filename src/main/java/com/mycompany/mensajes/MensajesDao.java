@@ -115,4 +115,31 @@ public class MensajesDao {
         return registros;
     }
     
+    public int eliminar(Mensaje mensaje) throws SQLException{
+        String sql = "DELETE FROM mensajes WHERE id_mensaje = ?;";
+        int registros = 0;            
+        try {           
+            
+            this.conn = getConexion();
+            this.ps = this.conn.prepareStatement(sql);
+                        
+            this.ps.setInt(1, mensaje.getId());
+            registros = this.ps.executeUpdate();
+            
+        } catch (ClassNotFoundException ex) {
+            
+            ex.printStackTrace(System.out);
+        
+        } finally {
+            try {
+                cerrar(this.ps);
+                cerrar(this.conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+        return registros;
+    }
+
 }
