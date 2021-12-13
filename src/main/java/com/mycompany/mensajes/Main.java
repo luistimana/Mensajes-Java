@@ -17,6 +17,10 @@ public class Main {
 //        Conexion.getConexion();
 //        System.out.println("Conexion exitosa");
          MensajesDao mensajeDao = new MensajesDao();
+         Mensaje msm = new Mensaje("Hola desde Main", "Main");
+         int registro = mensajeDao.insertar(msm);
+         
+         System.out.println("Se inserto " + registro + " registro.");
          
          List<Mensaje> mensajes = mensajeDao.seleccionar();
          

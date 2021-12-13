@@ -57,4 +57,34 @@ public class MensajesDao {
         
         return mensajes;
     }
+    
+    public int insertar(Mensaje mensaje) throws SQLException{
+        String sql = "INSERT INTO mensajes(mensaje, autor, fecha) VALUES (?, ?,CURRENT_TIME());";
+        int registros = 0;            
+        try {           
+            
+            this.conn = getConexion();
+            this.ps = this.conn.prepareStatement(sql);
+            
+            this.ps.setString(1, mensaje.getMensaje());
+            this.ps.setString(2, mensaje.getAutor());
+            registros = this.ps.executeUpdate();
+            
+        } catch (ClassNotFoundException ex) {
+            
+            ex.printStackTrace(System.out);
+        
+        } finally {
+            try {
+                cerrar(this.ps);
+                cerrar(this.conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+        return registros;
+    }
+
+    
 }
