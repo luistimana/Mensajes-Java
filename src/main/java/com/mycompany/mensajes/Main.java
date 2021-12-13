@@ -6,6 +6,7 @@
 package com.mycompany.mensajes;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -13,7 +14,14 @@ import java.sql.SQLException;
  */
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Conexion.getConexion();
-        System.out.println("Conexion exitosa");
+//        Conexion.getConexion();
+//        System.out.println("Conexion exitosa");
+         MensajesDao mensajeDao = new MensajesDao();
+         
+         List<Mensaje> mensajes = mensajeDao.seleccionar();
+         
+         for (Mensaje mensaje : mensajes){
+             System.out.println(mensaje);
+         }
     }
 }
