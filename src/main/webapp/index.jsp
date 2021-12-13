@@ -15,28 +15,33 @@
     <body>
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Crear Mensaje</h5>
-                </div>
-                <div class="modal-body">
-                    <form>
+                <form action="index.jsp" method = "POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Crear Mensaje</h5>
+                    </div>
+                    <div class="modal-body">
+
                         <div class="form-group">
                             <label>Ingrese el mensaje</label>
                             <textarea class="form-control" name = "mensaje" rows="3"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Autor</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name = "autor">
                         </div>
 
-                    </form>
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-primary" name="enviar">Enviar</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" name="enviar">Enviar</button>
+                    </div>
+                </form>
             </div>
         </div>
+        
+        <%
+            String mensaje = request.getParameter("mensaje");
+            String autor = request.getParameter("autor");
+        %>
 
         <div class="modal-dialog">
             <div class="modal-content">
@@ -46,9 +51,9 @@
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Luis Timaná</h5>
-                            
-                            <p class="card-text">Mensaje corto.</p>
+                            <h5 class="card-title"><%=autor%></h5>
+
+                            <p class="card-text"><%=mensaje%></p>
                             <p class="blockquote-footer"><cite>12/12/2021</cite></p>
                             <a href="#" class="card-link">Editar</a>
                             <a href="#" class="card-link">Eliminar</a>
@@ -57,8 +62,5 @@
                 </div>
             </div>
         </div>
-
-
-
     </body>
 </html>
