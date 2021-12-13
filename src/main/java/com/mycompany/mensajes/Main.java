@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 //        Conexion.getConexion();
 //        System.out.println("Conexion exitosa");
-         MensajesDao mensajeDao = new MensajesDao();
+//         MensajesDao mensajeDao = new MensajesDao();
 //         Mensaje msm = new Mensaje("Hola desde Main", "Main");
 //         int registro = mensajeDao.insertar(msm);
 //         
@@ -25,14 +25,14 @@ public class Main {
 //         int registro = mensajeDao.insertar(msm);
 //         System.out.println("Se edito " + registro + " registro.");
          
-         Mensaje msm = new Mensaje(4);
-         int registro = mensajeDao.eliminar(msm);
-         System.out.println("Se elimino " + registro + " registro.");
-         
-         List<Mensaje> mensajes = mensajeDao.seleccionar();
-         
-         for (Mensaje mensaje : mensajes){
-             System.out.println(mensaje);
-         }
+//         Mensaje msm = new Mensaje(4);
+//         int registro = mensajeDao.eliminar(msm);
+//         System.out.println("Se elimino " + registro + " registro.");
+//         
+//         List<Mensaje> mensajes = mensajeDao.seleccionar();
+//         
+//         for (Mensaje mensaje : mensajes){
+//             System.out.println(mensaje);
+//         }
     }
 }

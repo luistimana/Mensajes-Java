@@ -4,6 +4,9 @@
     Author     : Luis Timana
 --%>
 
+<%@page import="com.mycompany.mensajes.Mensaje"%>
+<%@page import="java.util.*"%>
+<%@page import="com.mycompany.mensajes.MensajesDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,28 +41,33 @@
             </div>
         </div>
         
-        <%
-            String mensaje = request.getParameter("mensaje");
-            String autor = request.getParameter("autor");
-        %>
-
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Todos los mensajes</h5>
                 </div>
+                <%
+                    MensajesDao mensajeDao = new MensajesDao();
+                    List<Mensaje> mensajes = mensajeDao.seleccionar();
+                    
+                    Collections.reverse(mensajes);
+                    
+                    for (Mensaje mensaje : mensajes){
+                            
+                 %>
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><%=autor%></h5>
+                            <h5 class="card-title"><%=mensaje.getAutor()%></h5>
 
-                            <p class="card-text"><%=mensaje%></p>
-                            <p class="blockquote-footer"><cite>12/12/2021</cite></p>
+                            <p class="card-text"><%=mensaje.getMensaje()%></p>
+                            <p class="blockquote-footer"><cite><%=mensaje.getFecha()%></cite></p>
                             <a href="#" class="card-link">Editar</a>
                             <a href="#" class="card-link">Eliminar</a>
                         </div>
                     </div>
                 </div>
+                <%}%>
             </div>
         </div>
     </body>
