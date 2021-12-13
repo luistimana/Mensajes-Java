@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Mensajes</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     </head>
     <body>
@@ -40,14 +40,25 @@
                 </form>
             </div>
         </div>
-        
+        <%
+            MensajesDao mensajeDao = new MensajesDao();
+            
+            if(request.getParameter("enviar") != null){
+                 Mensaje mensaje = new Mensaje(
+                    request.getParameter("mensaje"), 
+                    request.getParameter("autor")
+                );
+                
+                mensajeDao.insertar(mensaje);
+            }
+        %>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Todos los mensajes</h5>
                 </div>
                 <%
-                    MensajesDao mensajeDao = new MensajesDao();
+                    //MensajesDao mensajeDao = new MensajesDao();
                     List<Mensaje> mensajes = mensajeDao.seleccionar();
                     
                     Collections.reverse(mensajes);
@@ -62,8 +73,12 @@
 
                             <p class="card-text"><%=mensaje.getMensaje()%></p>
                             <p class="blockquote-footer"><cite><%=mensaje.getFecha()%></cite></p>
-                            <a href="#" class="card-link">Editar</a>
-                            <a href="#" class="card-link">Eliminar</a>
+                            <a href="editar.jsp?id=
+                               <%=mensaje.getId()%>
+                               &&mensaje=<%=mensaje.getMensaje()%>
+                               &&autor=<%=mensaje.getAutor()%>" 
+                               class="card-link">Editar</a>
+                            <a href="eliminar.jsp?id=<%=mensaje.getId()%>" class="card-link">Eliminar</a>
                         </div>
                     </div>
                 </div>
